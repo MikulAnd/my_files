@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": 36.25,
+        "lat": 50
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "рвані хмари",
+            "icon": "04n"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 5.81,
+        "feels_like": 3.88,
+        "temp_min": 5.81,
+        "temp_max": 5.81,
+        "pressure": 1021,
+        "humidity": 77,
+        "sea_level": 1021,
+        "grnd_level": 1002
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 2.48,
+        "deg": 169,
+        "gust": 6.76
+    },
+    "clouds": {
+        "all": 63
+    },
+    "dt": 1738076638,
+    "sys": {
+        "country": "UA",
+        "sunrise": 1738041245,
+        "sunset": 1738074095
+    },
+    "timezone": 7200,
+    "id": 706483,
+    "name": "Kharkiv",
+    "cod": 200
+}

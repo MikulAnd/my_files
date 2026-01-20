@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Текст та шрифти</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базові стилі сторінки */
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        /* Стилізація заголовків */
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            text-align: left;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 10px;
+            color: #c0392b;
+        }
+        /* Стилізація тексту */
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        /* Стилізація посилань */
+        a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        /* Структурні блоки */
+        header, footer {
+            background-color: #f4f4f4;
+            padding: 30px;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Типографіка: Мікуленко Андрій</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Про цей проект</h2>
+            <p>
+                У цій лабораторній роботі я практикуюся працювати з текстовими стилями CSS. 
+                Головним шрифтом сторінки обрано <strong>Roboto</strong>, який завантажується 
+                безпосередньо з серверів Google. Це дозволяє тексту виглядати сучасно та однаково 
+                на будь-якому пристрої.
+            </p>
+            <p>
+                Я налаштував <em>міжрядковий інтервал</em> (line-height) та <em>відступи</em>, 
+                щоб текст легко читався.
+            </p>
+        </section>
+
+        <section>
+            <h2>Мої інтереси: S.T.A.L.K.E.R. 2</h2>
+            <p>
+                Зона відчуження змінилася. Вона стала ще небезпечнішою, але й привабливішою для сталкерів. 
+                Нова частина гри пропонує неймовірну графіку та атмосферу. Я стежу за новинами 
+                та оглядами, щоб дізнатися більше про механіки виживання та артефакти.
+            </p>
+            <p>
+                Більше про гру можна дізнатися на офіційному сайті або переглянувши мій код на GitHub.
+            </p>
+            
+            <p>
+                Корисні посилання:<br>
+                <a href="https://www.stalker2.com" target="_blank">Офіційний сайт гри</a> | 
+                <a href="https://github.com/MikulAnd/my_files" target="_blank">Мій GitHub репозиторій</a>
+            </p>
+        </section>

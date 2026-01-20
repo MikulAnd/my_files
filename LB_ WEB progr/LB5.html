@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Практична робота: Селектори та кольори</title>
     <style>
-        /* 1. Селектор ЕЛЕМЕНТА (Завдання 2) */
+        /* Стилі для основних елементів */
         h1 {
-            color: #2c3e50; /* HEX модель */
+            color: #2c3e50;
             font-size: 36px;
             text-align: center;
         }
 
-        /* 2. Селектор КЛАСУ (Завдання 2) */
         .intro {
             background-color: #f0f0f0;
             color: #333333;
@@ -21,9 +20,9 @@
             font-family: Arial, sans-serif;
         }
 
-        /* 3. Селектор ІДЕНТИФІКАТОРА (Завдання 2) */
+        /* Стилізація кнопки */
         #submitBtn {
-            background-color: #e74c3c; /* Червоний */
+            background-color: #e74c3c;
             color: #ffffff;
             padding: 10px 20px;
             border: none;
@@ -35,49 +34,37 @@
             transition: background 0.3s;
         }
 
-        /* Ефект наведення (HOVER) */
         #submitBtn:hover {
-            background-color: #c0392b; /* Темніший червоний */
+            background-color: #c0392b;
         }
 
-        /* 4. КОМБІНОВАНИЙ селектор (Завдання 2) */
-        /* Вибираємо li тільки всередині елемента з id="about" */
+        /* Комбінований селектор для списку */
         #about li {
-            color: #3498db; /* Блакитний */
+            color: #3498db;
             font-weight: bold;
             list-style-type: square;
         }
 
-        /* 5. Кольорові моделі (Завдання 3) */
+        /* Використання різних моделей кольорів */
         section {
-            /* Модель HSL (Hue, Saturation, Lightness) */
-            background-color: hsl(200, 50%, 90%); 
+            background-color: hsl(200, 50%, 90%);
             padding: 20px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
         }
 
-        /* Модель RGBA (Red, Green, Blue, Alpha/Prozorro) */
         p {
-            color: rgba(0, 0, 0, 0.8); /* Напівпрозорий чорний */
+            color: rgba(0, 0, 0, 0.8);
         }
 
-        /* 6. ПРІОРИТЕТИ (Вага селекторів) (Завдання 4) */
-        /* Рівень 1: Селектор тегу (найслабший) */
-        p {
-            color: black; 
-        }
-
-        /* Рівень 2: Селектор класу (сильніший за тег) */
+        /* Перевірка пріоритетів */
         .description {
-            color: green; /* Цей колір перекриє чорний */
+            color: green;
             font-style: italic;
         }
 
-        /* Рівень 3: Специфічний селектор (сильніший за простий клас) */
-        /* Ми уточнюємо: елемент з класом .description, який лежить у section */
         section .description {
-            color: blue; /* Цей колір перекриє зелений */
+            color: blue;
             font-size: 18px;
         }
     </style>
@@ -91,9 +78,7 @@
         <section>
             <h2>Основна секція</h2>
             <p class="intro">Я студент ІТ-коледжу. Це вступний абзац, стилізований через клас.</p>
-            
             <p class="description">Тут описано деталі лабораторної роботи. Цей текст змінив колір завдяки CSS-специфічності.</p>
-            
             <button id="submitBtn">Натисніть мене</button>
         </section>
 

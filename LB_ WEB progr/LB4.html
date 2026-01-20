@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблиці та форми</title>
+    <style>
+        /* Додав трохи стилів, щоб таблиця мала гарний вигляд (рамки) */
+        table { width: 50%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        form { background-color: #f9f9f9; padding: 20px; border: 1px solid #ccc; width: 50%; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Лабораторна робота №4: Мікуленко Андрій</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>1. Список бажаного (Таблиця)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Категорія</th>
+                        <th>Назва товару</th>
+                        <th>Ціна</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">Відеоігри</td> <td>S.T.A.L.K.E.R. 2: Heart of Chornobyl</td>
+                        <td>2 500 грн</td>
+                    </tr>
+                    <tr>
+                        <td>Cyberpunk 2077: Ultimate Edition</td>
+                        <td>1 500 грн</td>
+                    </tr>
+                    <tr>
+                        <td>Техніка</td>
+                        <td>Sony PlayStation 5</td>
+                        <td>20 000 грн</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2"><strong>Загальна вартість:</strong></td>
+                        <td><strong>24 000 грн</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>2. Реєстрація у клан (Форма)</h2>
+            <form action="#" method="post">
+                
+                <label for="username">Нікнейм (Ім'я):</label><br>
+                <input type="text" id="username" name="username" placeholder="Введіть нік" required><br><br>
+
+                <label for="useremail">Email:</label><br>
+                <input type="email" id="useremail" name="useremail" placeholder="example@mail.com" required><br><br>
+
+                <label for="userpass">Пароль:</label><br>
+                <input type="password" id="userpass" name="userpass" required><br><br>
+
+                <p>Ваш рівень підготовки:</p>
+                <input type="radio" id="novice" name="level" value="novice">
+                <label for="novice">Новачок</label><br>
+                <input type="radio" id="pro" name="level" value="pro" checked>
+                <label for="pro">Досвідчений (Stalker)</label><br><br>
+
+                <p>Інтереси:</p>
+                <input type="checkbox" id="game" name="hobby" value="game" checked>
+                <label for="game">Відеоігри</label><br>
+                <input type="checkbox" id="sport" name="hobby" value="sport" checked>
+                <label for="sport">Спорт/Воркаут</label><br>
+                <input type="checkbox" id="cook" name="hobby" value="cook">
+                <label for="cook">Кулінарія</label><br><br>
+
+                <label for="avatar">Завантажити аватар:</label><br>
+                <input type="file" id="avatar" name="avatar"><br><br>
+
+                <input type="submit" value="Надіслати заявку">
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Мікуленко А.О. Лабораторна робота №4</p>
+    </footer>
+</body>
+</html>

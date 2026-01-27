@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 9 - Flexbox</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        h2 { border-bottom: 2px solid #333; margin-top: 30px; }
+
+        /* === ЗАВДАННЯ 1: Вирівнювання === */
+        .container-1 {
+            display: flex;             /* Вмикаємо Flexbox */
+            justify-content: space-around; /* Вирівнювання по горизонталі */
+            align-items: center;       /* Вирівнювання по вертикалі */
+            height: 200px;
+            border: 2px solid #333;
+            background-color: #f4f4f4;
+        }
+        .item { padding: 20px; text-align: center; color: white; font-weight: bold; }
+        
+        .item1 { background: #e74c3c; flex-grow: 1; flex-basis: 100px; }
+        .item2 { background: #2ecc71; flex-grow: 2; flex-basis: 150px; } /* Цей буде найширшим */
+        .item3 { background: #3498db; flex-grow: 1; flex-basis: 120px; }
+
+        /* === ЗАВДАННЯ 2: Адаптивність === */
+        .container-2 {
+            display: flex;
+            flex-wrap: wrap; /* Дозволяє перенос на новий рядок */
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .box {
+            flex: 1 1 150px; /* grow=1, shrink=1, basis=150px */
+            background-color: lightgreen;
+            margin: 5px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Лабораторна №9: Flexbox (Мікуленко А.)</h1>
+
+    <h2>Завдання 1. Вирівнювання та пропорції</h2>
+    <div class="container-1">
+        <div class="item item1">S.T.A.L.K.E.R. (Grow 1)</div>
+        <div class="item item2">Workout (Grow 2)</div>
+        <div class="item item3">React (Grow 1)</div>
+    </div>
+
+    <h2>Завдання 2. Адаптивна сітка (Flex-wrap)</h2>
+    <p>Спробуй змінити ширину вікна браузера — блоки будуть переноситися.</p>
+    <div class="container-2">
+        <div class="box">Блок 1</div>
+        <div class="box">Блок 2</div>
+        <div class="box">Блок 3</div>
+        <div class="box">Блок 4</div>
+        <div class="box">Блок 5</div>
+    </div>
+</body>
+</html>

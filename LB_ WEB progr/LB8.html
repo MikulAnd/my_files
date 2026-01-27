@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота 8</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        h2 { border-bottom: 2px solid #333; margin-top: 20px; padding-bottom: 5px; }
+
+        /* Завдання 1: Блокові елементи */
+        .task1-block1 {
+            width: 300px; padding: 15px; margin-bottom: 10px;
+            border: 3px solid blue; /* [cite: 558] */
+        }
+        .task1-block2 {
+            width: 300px; background: #ddd; border: 1px solid #999;
+            margin-top: 50px; margin-left: 50px; /* [cite: 560] */
+            padding: 20px; /* [cite: 561] */
+        }
+
+        /* Завдання 2: Padding, Margin, Border */
+        .task2-box1 {
+            width: 200px; background: #fcc;
+            padding: 10px; margin: 10px; border: 2px solid red;
+        }
+        .task2-box2 {
+            width: 250px; background: #cfc;
+            padding: 20px; margin: 20px; border: 4px dashed green;
+        }
+        .task2-box3 {
+            width: 300px; background: #ccf;
+            padding: 30px; margin: 30px; border: 5px double blue;
+        }
+
+        /* Завдання 3: Box-sizing */
+        .task3-default {
+            width: 300px; padding: 20px; margin-bottom: 10px;
+            background: orange; border: 5px solid red;
+        }
+        .task3-border-box {
+            width: 300px; padding: 20px; 
+            background: #2c3e50; color: white; border: 5px solid green;
+            box-sizing: border-box; /* [cite: 573] */
+        }
+    </style>
+</head>
+<body>
+    <h1>Лабораторна робота №8: Мікуленко Андрій</h1>
+
+    <h2>1. Робота з блоками</h2>
+    <div class="task1-block1">Блок 1: Рамка 3px solid blue</div>
+    <div class="task1-block2">Блок 2: Margin 50px, Padding 20px</div>
+
+    <h2>2. Параметри відступів і рамок</h2>
+    <div class="task2-box1">Блок 1 (Solid)</div>
+    <div class="task2-box2">Блок 2 (Dashed)</div>
+    <div class="task2-box3">Блок 3 (Double)</div>
+
+    <h2>3. Box-sizing (Порівняння)</h2>
+    <div class="task3-default">Content-box (Ширина > 300px)</div>
+    <div class="task3-border-box">Border-box (Ширина = 300px)</div>
+</body>
+</html>

@@ -1,51 +1,85 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-// === ЗАВДАННЯ 1: Компонент з іменем [cite: 214-216] ===
-function MyName() {
+function UserInfo(props) {
   return (
-    <div className="name-section" style={{ borderBottom: "2px solid #333", paddingBottom: "10px" }}>
-      <h1>Моє ім'я: Мікуленко Андрій</h1>
-      <p>Лабораторна робота №11</p>
+    <div style={{ padding: "10px", backgroundColor: "#e8f4f8", borderRadius: "5px" }}>
+      <p>Привіт, мене звати {props.name}, мені {props.age} років.</p>
     </div>
   );
 }
 
-// === ЗАВДАННЯ 2: Компонент назви курсу [cite: 219-220] ===
-function CourseTitle() {
-  return <h2 style={{ color: "darkblue" }}>Курс: Основи Web-програмування</h2>;
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  increment = () => {
+    this.setState({ count: this.state.count + 1 });
+  }
+
+  render() {
+    return (
+      <div style={{ padding: "10px", backgroundColor: "#f9ebea", borderRadius: "5px", marginTop: "10px" }}>
+        <p>Поточне значення лічильника: <strong>{this.state.count}</strong></p>
+        <button onClick={this.increment} style={{ padding: "5px 15px", cursor: "pointer" }}>
+          Збільшити
+        </button>
+      </div>
+    );
+  }
 }
 
-// === ЗАВДАННЯ 2: Компонент списку тем ===
-function TopicList() {
-  const topics = [
-    "HTML5 та семантика",
-    "CSS3 (Flexbox, Grid)",
-    "Основи JavaScript",
-    "React: Компоненти та JSX"
-  ];
-
+function StudentItem({ name, group }) {
   return (
-    <div className="topics-section" style={{ textAlign: "left", display: "inline-block" }}>
-      <h3>Вивчені теми:</h3>
-      <ul>
-        {topics.map((topic, index) => (
-          <li key={index}>{topic}</li>
-        ))}
-      </ul>
-    </div>
+    <li style={{ margin: "5px 0" }}>
+      <strong>{name}</strong> — Група: {group}
+    </li>
   );
 }
 
-// Головний компонент App
+class StudentList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      students: [
+        { id: 1, name: "Мікуленко Андрій", group: "ПЗ-11-11" },
+        { id: 2, name: "Олександр Іванов", group: "ІТ-21" },
+        { id: 3, name: "Марія Петренко", group: "ІТ-22" }
+      ]
+    };
+  }
+
+  render() {
+    return (
+      <div style={{ padding: "10px", backgroundColor: "#e9f7ef", borderRadius: "5px", marginTop: "10px" }}>
+        <h3>Список студентів:</h3>
+        <ul>
+          {this.state.students.map(student => (
+            <StudentItem key={student.id} name={student.name} group={student.group} />
+          ))}
+        </ul>
+      </div>
+    );
+  }
+}
+
 function App() {
   return (
-    <div className="App" style={{ textAlign: "center", padding: "20px", fontFamily: "Arial" }}>
-      <MyName />
-      <div style={{ marginTop: "20px", backgroundColor: "#f4f4f4", padding: "20px", borderRadius: "10px" }}>
-        <CourseTitle />
-        <TopicList />
-      </div>
+    <div className="App" style={{ padding: "20px", fontFamily: "sans-serif", maxWidth: "600px", margin: "0 auto" }}>
+      <h2>Завдання 1</h2>
+      <UserInfo name="Андрій" age={39} />
+      
+      <hr style={{ margin: "20px 0" }} />
+
+      <h2>Завдання 2</h2>
+      <Counter />
+
+      <hr style={{ margin: "20px 0" }} />
+
+      <h2>Додаткове завдання</h2>
+      <StudentList />
     </div>
   );
 }

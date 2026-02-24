@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛР 11 - Векторна графіка SVG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="svg-bg"> <header>
+        <h1>Векторна графіка та SVG</h1>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Інтерактивна композиція</h2>
+            <svg width="300" height="200" viewBox="0 0 300 200" class="main-svg">
+                <rect x="20" y="50" width="80" height="80" class="svg-rect" />
+                
+                <circle cx="150" cy="90" r="50" class="svg-circle">
+                    <animate attributeName="r" from="50" to="40" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+                
+                <polygon points="220,130 280,130 250,40" class="svg-poly" />
+            </svg>
+            <p>Наведіть курсор на фігури, щоб побачити ефекти.</p>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+/* Загальні стилі сторінки та радіальний градієнт фону */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle, #89f7fe, #66a6ff);
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Заголовок з тінню для тексту та псевдоелементами */
+.main-title {
+    text-align: center;
+    color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    position: relative;
+    margin-bottom: 50px;
+}
+
+/* Декоративний значок перед заголовком */
+.main-title::before {
+    content: "🎨 ";
+    font-size: 0.9em;
+}
+
+/* Декоративна лінія після заголовка */
+.main-title::after {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 4px;
+    background-color: #333;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Основний блок з заокругленими кутами та кількома тінями */
+.card {
+    background-color: #ffffff;
+    padding: 30px;
+    width: 60%;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover-ефект для блоку */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Псевдоелемент для тексту всередині блоку */
+.info::before {
+    content: "📌 ";
+    font-weight: bold;
+}
+
+footer {
+    margin-top: auto;
+    color: #444;
+}

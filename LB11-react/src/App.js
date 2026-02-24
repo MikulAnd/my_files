@@ -1,85 +1,141 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-function UserInfo(props) {
+// Завдання 1: Використання props 
+function UserCard({ name, email }) {
   return (
-    <div style={{ padding: "10px", backgroundColor: "#e8f4f8", borderRadius: "5px" }}>
-      <p>Привіт, мене звати {props.name}, мені {props.age} років.</p>
+    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
+      <p>Ім'я: {name}</p>
+      <p>Email: {email}</p>
     </div>
   );
 }
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 };
-  }
+// Завдання 2: Використання state 
+function Counter() {
+  const [count, setCount] = useState(0);
 
-  increment = () => {
-    this.setState({ count: this.state.count + 1 });
-  }
-
-  render() {
-    return (
-      <div style={{ padding: "10px", backgroundColor: "#f9ebea", borderRadius: "5px", marginTop: "10px" }}>
-        <p>Поточне значення лічильника: <strong>{this.state.count}</strong></p>
-        <button onClick={this.increment} style={{ padding: "5px 15px", cursor: "pointer" }}>
-          Збільшити
-        </button>
-      </div>
-    );
-  }
-}
-
-function StudentItem({ name, group }) {
   return (
-    <li style={{ margin: "5px 0" }}>
-      <strong>{name}</strong> — Група: {group}
-    </li>
+    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
+      <h4>Лічильник: {count}</h4>
+      <button onClick={() => setCount(count + 1)} style={{ marginRight: '5px' }}>Збільшити</button>
+      <button onClick={() => setCount(count - 1)}>Зменшити</button>
+    </div>
   );
 }
 
-class StudentList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      students: [
-        { id: 1, name: "Мікуленко Андрій", group: "ПЗ-11-11" },
-        { id: 2, name: "Олександр Іванов", group: "ІТ-21" },
-        { id: 3, name: "Марія Петренко", group: "ІТ-22" }
-      ]
-    };
-  }
-
-  render() {
-    return (
-      <div style={{ padding: "10px", backgroundColor: "#e9f7ef", borderRadius: "5px", marginTop: "10px" }}>
-        <h3>Список студентів:</h3>
-        <ul>
-          {this.state.students.map(student => (
-            <StudentItem key={student.id} name={student.name} group={student.group} />
-          ))}
-        </ul>
-      </div>
-    );
-  }
+// Завдання 3: Взаємодія між компонентами 
+function TodoList({ tasks }) {
+  return (
+    <ul>
+      {tasks.map((task, index) => (
+        <li key={index}>{task}</li>
+      ))}
+    </ul>
+  );
 }
 
+function TodoApp() {
+  const [tasks, setTasks] = useState(['Вивчити props', 'Зрозуміти state']);
+  const [inputValue, setInputValue] = useState('');
+
+  const addTask = () => {
+    if (inputValue.trim() !== '') {
+      setTasks([...tasks, inputValue]);
+      setInputValue('');
+    }
+  };
+
+  return (
+    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
+      <h4>Список завдань</h4>
+      <TodoList tasks={tasks} />
+      <input 
+        type="text" 
+        value={inputValue} 
+        onChange={(e) => setInputValue(e.target.value)} 
+        placeholder="Нове завдання"
+      />
+      <button onClick={addTask} style={{ marginLeft: '5px' }}>Додати</button>
+    </div>
+  );
+}
+
+// Додаткове завдання: Список товарів 
+function AddProduct({ onAddProduct }) {
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+
+  const handleAdd = () => {
+    if (name && price) {
+      onAddProduct({ name, price: parseFloat(price) });
+      setName('');
+      setPrice('');
+    }
+  };
+
+  return (
+    <div>
+      <input 
+        type="text" 
+        placeholder="Назва" 
+        value={name} 
+        onChange={e => setName(e.target.value)} 
+      />
+      <input 
+        type="number" 
+        placeholder="Ціна" 
+        value={price} 
+        onChange={e => setPrice(e.target.value)} 
+        style={{ margin: '0 5px', width: '80px' }}
+      />
+      <button onClick={handleAdd}>Додати товар</button>
+    </div>
+  );
+}
+
+function ProductApp() {
+  const [products, setProducts] = useState([
+    { id: 1, name: 'Ноутбук', price: 25000 },
+    { id: 2, name: 'Мишка', price: 800 }
+  ]);
+
+  const addProduct = (newProduct) => {
+    setProducts([...products, { id: Date.now(), ...newProduct }]);
+  };
+
+  return (
+    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px 0' }}>
+      <h4>Магазин</h4>
+      <AddProduct onAddProduct={addProduct} />
+      <ul>
+        {products.map(product => (
+          <li key={product.id}>{product.name} — {product.price} грн</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// Головний компонент
 function App() {
   return (
-    <div className="App" style={{ padding: "20px", fontFamily: "sans-serif", maxWidth: "600px", margin: "0 auto" }}>
-      <h2>Завдання 1</h2>
-      <UserInfo name="Андрій" age={39} />
+    <div className="App" style={{ padding: '20px', maxWidth: '600px' }}>
+      <h2>ЛР: Props та State</h2>
+      <p>Виконав: Мікуленко Андрій, ПЗ-11-11</p>
       
-      <hr style={{ margin: "20px 0" }} />
-
-      <h2>Завдання 2</h2>
+      <h3>Завдання 1: Props</h3>
+      <UserCard name="Андрій" email="andriy@test.com" />
+      <UserCard name="Олександр" email="alex@test.com" />
+      
+      <h3>Завдання 2: State</h3>
       <Counter />
+      
+      <h3>Завдання 3: Взаємодія між компонентами</h3>
+      <TodoApp />
 
-      <hr style={{ margin: "20px 0" }} />
-
-      <h2>Додаткове завдання</h2>
-      <StudentList />
+      <h3>Додаткове завдання</h3>
+      <ProductApp />
     </div>
   );
 }

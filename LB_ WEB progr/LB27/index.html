@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛР 27 - Оптимізація подій</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; }
+        .scroll-container { height: 1500px; padding: 20px; background: #f0f0f0; }
+        .search-section { padding: 20px; border-bottom: 2px solid #ccc; position: sticky; top: 0; background: white; }
+        img { display: block; width: 400px; height: 250px; margin: 20px 0; background: #ddd; }
+        #status { font-weight: bold; color: blue; }
+    </style>
+</head>
+<body>
+    <div class="search-section">
+        <h1>Оптимізація подій</h1>
+        <input type="text" id="search" placeholder="Пошук (Debounce)...">
+        <p>Статус прокрутки (Throttle): <span id="status">0px</span></p>
+    </div>
+
+    <div class="scroll-container">
+        <p>Прокручуйте вниз, щоб побачити завантаження зображень (Lazy Load).</p>
+        
+        <div style="height: 800px;"></div> 
+        <img data-src="https://picsum.photos/400/250?random=1" alt="Image 1">
+        <img data-src="https://picsum.photos/400/250?random=2" alt="Image 2">
+        <img data-src="https://picsum.photos/400/250?random=3" alt="Image 3">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

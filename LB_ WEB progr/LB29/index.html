@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛР - Таймери та час</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; transition: background 0.5s; }
+        #clock { font-size: 48px; font-weight: bold; margin-bottom: 20px; }
+        .controls { margin-top: 20px; }
+        input { padding: 5px; width: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Таймери та час</h1>
+    
+    <div id="clock">00:00:00</div>
+    <div id="date">Дата</div>
+
+    <div class="controls">
+        <h3>Встановити будильник:</h3>
+        <input type="number" id="alarmHour" placeholder="ГГ" min="0" max="23"> :
+        <input type="number" id="alarmMin" placeholder="ХХ" min="0" max="59">
+        <button id="setAlarmBtn">Встановити</button>
+    </div>
+
+    <div class="controls">
+        <h3>Зворотний відлік (сек):</h3>
+        <input type="number" id="countdownInput" value="10">
+        <button id="startTimerBtn">Старт</button>
+        <p id="timerDisplay"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

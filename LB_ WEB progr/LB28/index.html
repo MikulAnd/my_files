@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛР 28 - Web Storage</title>
+    <style>
+        body.light { background-color: #fff; color: #000; }
+        body.dark { background-color: #333; color: #fff; }
+        .container { padding: 20px; max-width: 500px; margin: auto; }
+        form { margin-top: 20px; padding: 15px; border: 1px solid #ccc; }
+        input { display: block; margin: 10px 0; width: 100%; padding: 8px; }
+    </style>
+</head>
+<body class="light">
+    <div class="container">
+        <h1>Керування сховищем (Web Storage)</h1>
+        <button id="themeButton">Перемкнути тему</button>
+
+        <form id="userForm">
+            <h3>Тимчасові дані (SessionStorage)</h3>
+            <input type="text" name="userName" id="userName" placeholder="Ваше ім'я">
+            <input type="email" name="userEmail" id="userEmail" placeholder="Ваш Email">
+            <p><small>*Ці дані зникнуть після закриття вкладки.</small></p>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>ЛР - Пагінація</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .item { padding: 10px; border-bottom: 1px solid #eee; }
+        .pagination-controls { margin: 20px 0; }
+        button { padding: 8px 16px; cursor: pointer; margin-right: 5px; }
+        #infinite-container { margin-top: 40px; border-top: 2px solid #333; }
+        .loader { color: blue; font-style: italic; display: none; }
+    </style>
+</head>
+<body>
+    <h1>Пагінація (Андрій, ПЗ-11-11)</h1>
+
+    <section>
+        <h2>1. Клієнтська пагінація</h2>
+        <div id="client-list"></div>
+        <div class="pagination-controls">
+            <button id="prevBtn">Попередня</button>
+            <span id="pageIndicator">Сторінка 1</span>
+            <button id="nextBtn">Наступна</button>
+        </div>
+    </section>
+
+    <section id="infinite-container">
+        <h2>2. Інфінітна прокрутка (Серверна пагінація)</h2>
+        <div id="server-list"></div>
+        <div id="loader" class="loader">Завантаження нових даних...</div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

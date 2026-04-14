@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes App | Підсумкова робота</title>
+    <title>Нотатки | Підсумкова робота</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 20px; }
         .container { background: white; width: 100%; max-width: 550px; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .advice-box { background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-style: italic; color: #0056b3; border-left: 4px solid #007bff; }
+        .advice-box { background: #e7f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-style: italic; color: #0056b3; border-left: 4px solid #007bff; min-height: 20px; }
         h1 { text-align: center; margin-bottom: 25px; color: #333; }
         .input-group { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         input, textarea { padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; width: 100%; box-sizing: border-box; }
-        button#saveBtn { padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; }
-        .note { background: #fff9c4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 6px solid #fbc02d; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .note h3 { margin: 0 0 10px 0; color: #333; }
-        .note p { margin: 0 0 15px 0; color: #555; white-space: pre-wrap; }
+        button#saveBtn { padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        .note { background: #fff9c4; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 6px solid #fbc02d; box-shadow: 0 4px 6px rgba(0,0,0,0.05); position: relative; }
+        .note h3 { margin: 0 0 10px 0; color: #333; font-size: 1.2em; }
+        .note p { margin: 0 0 15px 0; color: #555; white-space: pre-wrap; line-height: 1.5; }
         .btn-group { display: flex; gap: 10px; justify-content: flex-end; }
         .edit-btn { background: #17a2b8; color: white; border: none; padding: 7px 15px; border-radius: 5px; cursor: pointer; }
         .delete-btn { background: #dc3545; color: white; border: none; padding: 7px 15px; border-radius: 5px; cursor: pointer; }
@@ -22,8 +22,8 @@
 </head>
 <body>
     <div class="container">
-        <div id="advice" class="advice-box">Завантаження поради...</div>
-        <h1>📝 Нотатки</h1>
+        <div id="advice" class="advice-box">Завантаження поради дня...</div>
+        <h1>📝 Мої нотатки</h1>
         <div class="input-group">
             <input type="text" id="noteTitle" placeholder="Заголовок нотатки">
             <textarea id="noteText" placeholder="Текст вашої нотатки..." rows="4"></textarea>

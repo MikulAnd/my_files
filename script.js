@@ -1,4 +1,4 @@
-// Клас для моделювання нотатки
+// 1. Клас для моделювання нотатки (ООП)
 class Note {
     constructor(id, title, text) {
         this.id = id;
@@ -13,20 +13,29 @@ const saveBtn = document.getElementById('saveBtn');
 const notesContainer = document.getElementById('notesContainer');
 const adviceBox = document.getElementById('advice');
 
+// Завантаження даних з LocalStorage
 let notes = JSON.parse(localStorage.getItem('notes_storage')) || [];
 let editId = null;
 
-// Функція використання API для підвантаження поради
+// 2. Робота з API (Порада дня з перекладом)
 async function fetchAdvice() {
     try {
         const response = await fetch('https://api.adviceslip.com/advice');
         const data = await response.json();
-        adviceBox.innerText = `Порада дня: ${data.slip.advice}`;
+        const englishAdvice = data.slip.advice;
+
+        // Переклад на українську через MyMemory API
+        const translateRes = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(englishAdvice)}&langpair=en|uk`);
+        const translateData = await translateRes.json();
+        const ukrainianAdvice = translateData.responseData.translatedText;
+
+        adviceBox.innerText = `Порада дня: ${ukrainianAdvice}`;
     } catch (error) {
-        adviceBox.innerText = "Порада: Завжди пишіть чистий код!";
+        adviceBox.innerText = "Порада: Завжди пишіть чистий та зрозумілий код!";
     }
 }
 
+// 3. Відображення нотаток
 function render() {
     notesContainer.innerHTML = '';
     notes.forEach(note => {
@@ -44,11 +53,15 @@ function render() {
     });
 }
 
+// 4. Збереження / Редагування
 function handleSave() {
     const title = noteTitle.value.trim();
     const text = noteText.value.trim();
     
-    if (!title || !text) return;
+    if (!title || !text) {
+        alert("Заповніть, будь ласка, всі поля!");
+        return;
+    }
 
     if (editId) {
         const index = notes.findIndex(n => n.id === editId);
@@ -62,7 +75,7 @@ function handleSave() {
         notes.push(newNote);
     }
 
-    localStorage.setItem('notes_storage', JSON.stringify(notes));
+    syncStorage();
     noteTitle.value = '';
     noteText.value = '';
     render();
@@ -70,7 +83,7 @@ function handleSave() {
 
 window.deleteNote = (id) => {
     notes = notes.filter(n => n.id !== id);
-    localStorage.setItem('notes_storage', JSON.stringify(notes));
+    syncStorage();
     render();
 };
 
@@ -84,6 +97,12 @@ window.prepareEdit = (id) => {
     noteTitle.focus();
 };
 
+function syncStorage() {
+    localStorage.setItem('notes_storage', JSON.stringify(notes));
+}
+
 saveBtn.addEventListener('click', handleSave);
+
+// Початковий запуск
 fetchAdvice();
 render();

@@ -1,53 +1,65 @@
-// Клас для створення об'єкта завдання
-class Task {
+class Note {
     constructor(id, text) {
         this.id = id;
         this.text = text;
     }
 }
 
-const taskInput = document.getElementById('taskInput');
-const addBtn = document.getElementById('addBtn');
-const taskList = document.getElementById('taskList');
+const noteInput = document.getElementById('noteInput');
+const saveBtn = document.getElementById('saveBtn');
+const notesContainer = document.getElementById('notesContainer');
 
-// Отримуємо збережені дані або створюємо порожній масив
-let tasks = JSON.parse(localStorage.getItem('user_tasks')) || [];
+let notes = JSON.parse(localStorage.getItem('notes_data')) || [];
+let editId = null; 
 
 function render() {
-    taskList.innerHTML = '';
-    tasks.forEach(task => {
-        const item = document.createElement('div');
-        item.className = 'task-item';
-        item.innerHTML = `
-            <span>${task.text}</span>
-            <button class="delete-btn" onclick="deleteTask(${task.id})">🗑️</button>
+    notesContainer.innerHTML = '';
+    notes.forEach(note => {
+        const noteDiv = document.createElement('div');
+        noteDiv.className = 'note';
+        noteDiv.innerHTML = `
+            <div class="note-text">${note.text}</div>
+            <div class="btn-group">
+                <button class="edit-btn" onclick="prepareEdit(${note.id})">Редагувати</button>
+                <button class="delete-btn" onclick="deleteNote(${note.id})">Видалити</button>
+            </div>
         `;
-        taskList.appendChild(item);
+        notesContainer.appendChild(noteDiv);
     });
 }
 
-function addTask() {
-    const text = taskInput.value.trim();
-    if (text === "") return;
+function handleSave() {
+    const text = noteInput.value.trim();
+    if (!text) return;
 
-    const newTask = new Task(Date.now(), text);
-    tasks.push(newTask);
-    saveData();
-    taskInput.value = '';
+    if (editId) {
+        const index = notes.findIndex(n => n.id === editId);
+        notes[index].text = text;
+        editId = null;
+        saveBtn.innerText = 'Зберегти нотатку';
+    } else {
+        const newNote = new Note(Date.now(), text);
+        notes.push(newNote);
+    }
+
+    localStorage.setItem('notes_data', JSON.stringify(notes));
+    noteInput.value = '';
     render();
 }
 
-window.deleteTask = (id) => {
-    tasks = tasks.filter(t => t.id !== id);
-    saveData();
+window.deleteNote = (id) => {
+    notes = notes.filter(n => n.id !== id);
+    localStorage.setItem('notes_data', JSON.stringify(notes));
     render();
 };
 
-function saveData() {
-    localStorage.setItem('user_tasks', JSON.stringify(tasks));
-}
+window.prepareEdit = (id) => {
+    const note = notes.find(n => n.id === id);
+    noteInput.value = note.text;
+    editId = id;
+    saveBtn.innerText = 'Оновити нотатку';
+    noteInput.focus();
+};
 
-addBtn.addEventListener('click', addTask);
-
-// Перший запуск
+saveBtn.addEventListener('click', handleSave);
 render();

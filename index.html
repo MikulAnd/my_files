@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Підсумкова ЛР | Мій Розклад</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 40px; }
+        .app-container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { color: #333; text-align: center; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 25px; }
+        input { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; }
+        button#addBtn { padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .task-item { display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; transition: 0.3s; }
+        .task-item:hover { background: #f9f9f9; }
+        .delete-btn { color: #ff4d4d; cursor: pointer; border: none; background: none; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <h2>📅 Мій розклад</h2>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Додати нову задачу...">
+            <button id="addBtn">Додати</button>
+        </div>
+        <div id="taskList"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

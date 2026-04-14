@@ -1,4 +1,4 @@
-// 1. Клас для моделювання нотатки (ООП)
+// Клас для моделювання нотатки (ООП)
 class Note {
     constructor(id, title, text) {
         this.id = id;
@@ -9,36 +9,39 @@ class Note {
 
 const noteTitle = document.getElementById('noteTitle');
 const noteText = document.getElementById('noteText');
+const searchInput = document.getElementById('searchInput');
 const saveBtn = document.getElementById('saveBtn');
 const notesContainer = document.getElementById('notesContainer');
 const adviceBox = document.getElementById('advice');
 
-// Завантаження даних з LocalStorage
 let notes = JSON.parse(localStorage.getItem('notes_storage')) || [];
 let editId = null;
 
-// 2. Робота з API (Порада дня з перекладом)
+// Отримання поради та її переклад на українську
 async function fetchAdvice() {
     try {
         const response = await fetch('https://api.adviceslip.com/advice');
         const data = await response.json();
         const englishAdvice = data.slip.advice;
 
-        // Переклад на українську через MyMemory API
         const translateRes = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(englishAdvice)}&langpair=en|uk`);
         const translateData = await translateRes.json();
-        const ukrainianAdvice = translateData.responseData.translatedText;
-
-        adviceBox.innerText = `Порада дня: ${ukrainianAdvice}`;
+        adviceBox.innerText = `Порада дня: ${translateData.responseData.translatedText}`;
     } catch (error) {
-        adviceBox.innerText = "Порада: Завжди пишіть чистий та зрозумілий код!";
+        adviceBox.innerText = "Порада: Завжди пишіть чистий код!";
     }
 }
 
-// 3. Відображення нотаток
-function render() {
+// Рендеринг списку з фільтрацією
+function render(filter = '') {
     notesContainer.innerHTML = '';
-    notes.forEach(note => {
+    
+    const filteredNotes = notes.filter(note => 
+        note.title.toLowerCase().includes(filter.toLowerCase()) || 
+        note.text.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filteredNotes.forEach(note => {
         const div = document.createElement('div');
         div.className = 'note';
         div.innerHTML = `
@@ -53,15 +56,11 @@ function render() {
     });
 }
 
-// 4. Збереження / Редагування
+// Збереження або Оновлення
 function handleSave() {
     const title = noteTitle.value.trim();
     const text = noteText.value.trim();
-    
-    if (!title || !text) {
-        alert("Заповніть, будь ласка, всі поля!");
-        return;
-    }
+    if (!title || !text) return;
 
     if (editId) {
         const index = notes.findIndex(n => n.id === editId);
@@ -71,20 +70,19 @@ function handleSave() {
         saveBtn.innerText = 'Зберегти нотатку';
         saveBtn.style.background = '#28a745';
     } else {
-        const newNote = new Note(Date.now(), title, text);
-        notes.push(newNote);
+        notes.push(new Note(Date.now(), title, text));
     }
 
     syncStorage();
     noteTitle.value = '';
     noteText.value = '';
-    render();
+    render(searchInput.value);
 }
 
 window.deleteNote = (id) => {
     notes = notes.filter(n => n.id !== id);
     syncStorage();
-    render();
+    render(searchInput.value);
 };
 
 window.prepareEdit = (id) => {
@@ -101,8 +99,12 @@ function syncStorage() {
     localStorage.setItem('notes_storage', JSON.stringify(notes));
 }
 
+// Пошук в реальному часі
+searchInput.addEventListener('input', (e) => {
+    render(e.target.value);
+});
+
 saveBtn.addEventListener('click', handleSave);
 
-// Початковий запуск
 fetchAdvice();
 render();

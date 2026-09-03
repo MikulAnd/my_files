@@ -1,0 +1,4 @@
+info: connection established with switch_1
+error: packet drop occurred on port 5
+info: backup process started successfully
+critical: high latency detected on gateway 192.168.1.1

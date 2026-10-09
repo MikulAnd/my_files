@@ -1,8 +1,8 @@
 .App {
   font-family: Arial, sans-serif;
-  background-color: #eef2f5;
+  background-color: #f0f2f5;
   min-height: 100vh;
-  padding: 30px 20px;
+  padding: 30px 15px;
   box-sizing: border-box;
 }
 
@@ -12,14 +12,14 @@
 }
 
 .header h1 {
-  color: #1a365d;
+  color: #1a202c;
   margin-bottom: 5px;
 }
 
 .badge {
   display: inline-block;
   background-color: #2b6cb0;
-  color: #fff;
+  color: #ffffff;
   padding: 6px 14px;
   border-radius: 20px;
   font-weight: bold;
@@ -32,7 +32,7 @@
   margin: 0 auto 20px auto;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 .card h3 {
@@ -42,32 +42,41 @@
   padding-bottom: 8px;
 }
 
-.counter button {
+button {
   background-color: #3182ce;
-  color: white;
+  color: #ffffff;
   border: none;
-  padding: 10px 18px;
-  font-size: 15px;
+  padding: 8px 16px;
+  font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-.counter button:hover {
+button:hover {
   background-color: #2b6cb0;
 }
 
-.student-list ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.child-box {
+  background-color: #ebf8ff;
+  border-left: 4px solid #3182ce;
+  padding: 10px 15px;
+  margin-top: 15px;
+  color: #2c5282;
+  font-weight: 500;
 }
 
-.student-item {
-  padding: 8px 12px;
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.user-list li {
+  padding: 8px 0;
   border-bottom: 1px solid #edf2f7;
 }
 
-.student-item:last-child {
+.user-list li:last-child {
   border-bottom: none;
 }

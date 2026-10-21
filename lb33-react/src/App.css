@@ -1,174 +1,107 @@
-.App {
-  font-family: Arial, sans-serif;
-  background-color: #f7fafc;
-  min-height: 100vh;
-  padding: 30px 15px;
-  box-sizing: border-box;
+/* Базові змінні (світла тема) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #202124;
+  --header-bg: #f1f3f4;
+  --footer-bg: #e8eaed;
+  --border-color: #dadce0;
+  --btn-bg: #ffffff;
+  --btn-hover: #e8eaed;
+  --accent: #1a73e8;
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 25px;
+/* Змінні для темної теми */
+[data-theme='dark'] {
+  --bg-color: #202124;
+  --text-color: #e8eaed;
+  --header-bg: #303134;
+  --footer-bg: #171717;
+  --border-color: #5f6368;
+  --btn-bg: #3c4043;
+  --btn-hover: #5f6368;
+  --accent: #8ab4f8;
 }
 
-.header h1 {
-  color: #2d3748;
-  margin-bottom: 6px;
-}
-
-.badge {
-  display: inline-block;
-  background-color: #3182ce;
-  color: #ffffff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.card {
-  background-color: #ffffff;
-  max-width: 550px;
-  margin: 0 auto;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-}
-
-.add-todo {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.add-todo input {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #cbd5e0;
-  border-radius: 6px;
-  font-size: 15px;
-  outline: none;
-}
-
-.add-todo input:focus {
-  border-color: #3182ce;
-}
-
-.btn-primary {
-  background-color: #3182ce;
-  color: #ffffff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-.btn-primary:hover {
-  background-color: #2b6cb0;
-}
-
-.status-text {
-  color: #4a5568;
-  margin-bottom: 15px;
-  font-size: 15px;
-}
-
-.filters-panel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #edf2f7;
-  padding-bottom: 15px;
-}
-
-.filter-tabs {
-  display: flex;
-  gap: 5px;
-}
-
-.tab-btn {
-  background-color: #edf2f7;
-  color: #4a5568;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.tab-btn.active {
-  background-color: #3182ce;
-  color: #fff;
-}
-
-.btn-clear {
-  background: none;
-  border: none;
-  color: #e53e3e;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-}
-
-.btn-clear:hover {
-  text-decoration: underline;
-}
-
-.todo-list {
-  list-style: none;
-  padding: 0;
+/* Глобальні стилі */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
   margin: 0;
 }
 
-.todo-item {
+.App {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: var(--header-bg);
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #edf2f7;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s;
 }
 
-.todo-item:last-child {
-  border-bottom: none;
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-.todo-item label {
+.theme-switcher {
+  display: flex;
+  gap: 8px;
+  background-color: var(--border-color);
+  padding: 4px;
+  border-radius: 8px;
+}
+
+.theme-switcher button {
+  background-color: var(--btn-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 12px;
-  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-switcher button:hover {
+  background-color: var(--btn-hover);
+}
+
+.theme-switcher button.active {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+.content {
   flex: 1;
+  padding: 40px 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
-.todo-text {
-  font-size: 15px;
-  color: #2d3748;
+.badge {
+  background-color: var(--accent);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
 }
 
-.todo-item.completed .todo-text {
-  text-decoration: line-through;
-  color: #a0aec0;
-}
-
-.btn-delete {
-  background: none;
-  border: none;
-  color: #e53e3e;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 5px;
-  opacity: 0.5;
-  transition: opacity 0.2s;
-}
-
-.todo-item:hover .btn-delete {
-  opacity: 1;
-}
-
-.empty-msg {
+.footer {
+  background-color: var(--footer-bg);
   text-align: center;
-  color: #a0aec0;
-  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  transition: background-color 0.3s;
 }
